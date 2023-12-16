@@ -18,18 +18,21 @@ import {
   UseFormHandleSubmit,
   UseFormReturn,
   UseFormWatch,
-  useForm,
 } from "react-hook-form";
-import { addLocalStorage } from "../../../app/redux/slice/portfolioSlice";
+import { addLocalStorage } from "../../../redux/slice/portfolioSlice";
 import { useDispatch } from "react-redux";
-import AvatarSection from "./AvatarSection";
-import FormProfile from "../../../app/components/form/FormProfile";
-import PortfolioSection from "./PortfolioSection";
+import AvatarSection from "../AvatarSection";
+import FormProfile from "../../form/FormProfile";
+import PortfolioSection from "../PortfolioSection";
 import dynamic from "next/dynamic";
+import BackgroundSection from "../BackgroundSection";
 
-const BackgroundSection = dynamic(() => import("./BackgroundSection"), {
-  ssr: false,
-});
+// const BackgroundSection = dynamic(
+//   () => import("../../../app/components/page-module/BackgroundSection"),
+//   {
+//     ssr: false,
+//   }
+// );
 
 const EditPage: React.FC<{
   watch: UseFormWatch<FieldValues>;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar, Flex, Image, Text } from "@chakra-ui/react";
-import { FieldValues, UseFormWatch, useFormContext } from "react-hook-form";
+import { FieldValues, UseFormWatch } from "react-hook-form";
 import { startCase } from "lodash";
 import dayjs from "dayjs";
 
@@ -23,7 +23,6 @@ const Preview: React.FC<{ watch: UseFormWatch<FieldValues> }> = ({ watch }) => {
         <Flex
           pos="relative"
           flexDir="column"
-          // border="5px solid red"
           alignItems="center"
           justifyContent="center"
         >

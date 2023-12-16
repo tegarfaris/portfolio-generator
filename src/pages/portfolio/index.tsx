@@ -1,8 +1,8 @@
 import React from "react";
-import EditPage from "./edit";
+import EditPage from "../../app/components/page-module/edit";
 import { Flex } from "@chakra-ui/react";
 import Header from "../../app/components/header";
-import Preview from "./preview";
+import Preview from "../../app/components/page-module/preview";
 import ViewPage from "./view";
 import { useForm } from "react-hook-form";
 
