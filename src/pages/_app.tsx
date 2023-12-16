@@ -6,7 +6,7 @@ import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ValidatePortfolio } from "./portfolio/portfolio.validation";
+import { ValidatePortfolio } from "../app/validation/portfolio.validation";
 import { Provider } from "react-redux";
 import store from "../app/redux/store";
 
