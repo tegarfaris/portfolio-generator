@@ -1,7 +1,6 @@
 import * as Yup from "yup";
 
 export const ValidatePortfolio = Yup.object().shape({
-  //   userId: Yup.string(),
   backgroundImage: Yup.string().required("select your background image"),
   profileImage: Yup.string().required("select your profile image"),
   profileName: Yup.string().max(10).required("fullname is required"),
