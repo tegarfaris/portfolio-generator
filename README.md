@@ -1,14 +1,19 @@
-#Tech Stack
+# Tech Stack
 
 1. Next Js 14.0
 2. Chakra UI
 3. Redux toolkit
 
-#How to install
-|yarn install
+|| Live: https://portfolio-generator-tegarfarisns-projects.vercel.app/portfolio
 
-#How to run
-|yarn dev
+# How to install
 
-#How yo build
-|yarn build
+| yarn install
+
+# How to run
+
+| yarn dev
+
+# How yo build
+
+| yarn build
