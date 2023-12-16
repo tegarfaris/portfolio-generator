@@ -55,7 +55,7 @@ const Preview: React.FC<{ watch: UseFormWatch<FieldValues> }> = ({ watch }) => {
           <Text fontWeight={600} color="#B1B2B3" fontSize="lg">
             {watch("title") ? startCase(watch("title")) : "Your Title"}
           </Text>
-          <Text textAlign="center" w="md">
+          <Text textAlign="center" w="full" px={{ base: 10, lg: 20 }}>
             {watch("descriptionProfile")
               ? startCase(watch("descriptionProfile"))
               : "Deskripsi, lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet"}
