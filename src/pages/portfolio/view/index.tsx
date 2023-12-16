@@ -3,6 +3,7 @@ import { Avatar, Box, Flex, Image, Text } from "@chakra-ui/react";
 import { useFormContext } from "react-hook-form";
 import { startCase } from "lodash";
 import dayjs from "dayjs";
+import useGetPortfolio from "../../../app/hooks/useGetPortfolio";
 
 interface IPortfolio {
   portfolioName: string;
@@ -14,32 +15,35 @@ interface IPortfolio {
 }
 
 const ViewPage = () => {
-  const { watch, getValues } = useFormContext();
-  const portfolios = watch("portfolios") || [];
+  const { watch, reset } = useFormContext();
+
+  React.useEffect(() => {
+    const storageItem = localStorage.getItem("portfolio");
+
+    if (storageItem) {
+      reset(JSON.parse(storageItem));
+    }
+  }, [reset]);
 
   return (
     <Flex
       w="full"
-      flexDir="row-reverse"
+      flexDir={{ base: "column-reverse", md: "row-reverse" }}
       flexGrow={1}
       gap={5}
       justifyContent="space-between"
     >
-      {/* <Text fontWeight={700} fontSize="xl" color="#2A9EF4" mb={3}>
-        Preview Realtime
-      </Text> */}
-      <Flex bg="white" borderRadius="10px" flexDir="column" gap={2} w="xl">
+      <Flex bg="white" borderRadius="10px" flexDir="column" gap={2} w="full">
         <Flex
           pos="relative"
           flexDir="column"
-          // border="5px solid red"
           alignItems="center"
           justifyContent="center"
         >
           <Image
             src={
               watch("backgroundImage")
-                ? watch("backgroundImage").map((img: any) => img.preview)
+                ? watch("backgroundImage")
                 : "https://images.unsplash.com/photo-1503480207415-fdddcc21d5fc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJhY2tncm91bmQlMjBibHVlfGVufDB8MHwwfHx8MA%3D%3D" ||
                   "https://images.unsplash.com/photo-1503480207415-fdddcc21d5fc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJhY2tncm91bmQlMjBibHVlfGVufDB8MHwwfHx8MA%3D%3D"
             }
@@ -50,23 +54,14 @@ const ViewPage = () => {
             borderRadius="10px 10px 0 0"
           />
           <Avatar
-            src={
-              watch("profileImage")
-                ? watch("profileImage").map((img: any) => img.preview)
-                : ""
-            }
-            name={watch("fullName") ? watch("fullName") : ""}
-            mt={{ base: "-15px", lg: "-50px" }}
-            h={{ base: "30px", lg: "100px" }}
-            w={{ base: "30px", lg: "100px" }}
+            src={watch("profileImage") ?? ""}
+            name={watch("fullName") ?? ""}
+            mt={{ base: "-40px", lg: "-50px" }}
+            h={{ base: "80px", lg: "100px" }}
+            w={{ base: "80px", lg: "100px" }}
           />
         </Flex>
-        <Flex
-          justifyContent="center"
-          alignItems="center"
-          flexDir="column"
-          // maxW="md"
-        >
+        <Flex justifyContent="center" alignItems="center" flexDir="column">
           <Text fontWeight={600} fontSize="xl">
             {watch("profileName")
               ? startCase(watch("profileName"))
@@ -85,8 +80,8 @@ const ViewPage = () => {
           <Text fontWeight={600} fontSize="lg">
             Portfolio
           </Text>
-          {portfolios.length > 0 ? (
-            portfolios.map((portfolio: IPortfolio, index: number) => (
+          {watch("portfolios")?.length > 0 ? (
+            watch("portfolios")?.map((portfolio: IPortfolio, index: number) => (
               <Flex
                 key={index}
                 flexDir="column"

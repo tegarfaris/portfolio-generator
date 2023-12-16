@@ -6,14 +6,14 @@ interface IPortfolio {
   company: string;
   startDate: string;
   endDate: string;
-  description: string;
+  descriptionPortfolio: string;
 }
 export type IPortfolioType = {
   backgroundImage: string;
   profileImage: string;
   fullName: string;
   title: string;
-  description: string;
+  descriptionProfile: string;
   portfolios?: IPortfolio[];
 };
 
@@ -22,7 +22,7 @@ const initialState: IPortfolioType = {
   profileImage: "",
   fullName: "",
   title: "",
-  description: "",
+  descriptionProfile: "",
 };
 
 export const portfolioSlice = createSlice({
@@ -30,7 +30,7 @@ export const portfolioSlice = createSlice({
   initialState,
   reducers: {
     addLocalStorage: (state, { payload }) => {
-      console.log("payload", payload);
+      localStorage.setItem("portfolio", JSON.stringify(payload));
     },
   },
 });
@@ -38,6 +38,3 @@ export const portfolioSlice = createSlice({
 export const { addLocalStorage } = portfolioSlice.actions;
 
 export default portfolioSlice;
-
-// selector
-// export const getPortfolio
