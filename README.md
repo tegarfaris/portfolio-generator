@@ -4,7 +4,7 @@
 2. Chakra UI
 3. Redux toolkit
 
-|| Live: https://portfolio-generator-jcs7174n9-tegarfarisns-projects.vercel.app/
+|| Live: https://portfolio-generator-git-main-tegarfarisns-projects.vercel.app/portfolio
 
 # How to install
 
