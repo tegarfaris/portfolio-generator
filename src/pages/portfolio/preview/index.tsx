@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar, Flex, Image, Text } from "@chakra-ui/react";
-import { useFormContext } from "react-hook-form";
+import { FieldValues, UseFormWatch, useFormContext } from "react-hook-form";
 import { startCase } from "lodash";
 import dayjs from "dayjs";
 
@@ -13,10 +13,7 @@ interface IPortfolio {
   description: string;
 }
 
-const Preview = () => {
-  const { watch, getValues } = useFormContext();
-  const portfolios = watch("portfolios") || [];
-
+const Preview: React.FC<{ watch: UseFormWatch<FieldValues> }> = ({ watch }) => {
   return (
     <Flex flexDir="column">
       <Text fontWeight={700} fontSize="xl" color="#2A9EF4" mb={3}>
@@ -33,9 +30,8 @@ const Preview = () => {
           <Image
             src={
               watch("backgroundImage")
-                ? watch("backgroundImage").map((img: any) => img.preview)
-                : "https://images.unsplash.com/photo-1503480207415-fdddcc21d5fc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJhY2tncm91bmQlMjBibHVlfGVufDB8MHwwfHx8MA%3D%3D" ||
-                  "https://images.unsplash.com/photo-1503480207415-fdddcc21d5fc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJhY2tncm91bmQlMjBibHVlfGVufDB8MHwwfHx8MA%3D%3D"
+                ? watch("backgroundImage")
+                : "https://images.unsplash.com/photo-1503480207415-fdddcc21d5fc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJhY2tncm91bmQlMjBibHVlfGVufDB8MHwwfHx8MA%3D%3D"
             }
             w="full"
             objectFit="cover"
@@ -44,11 +40,7 @@ const Preview = () => {
             borderRadius="10px 10px 0 0"
           />
           <Avatar
-            src={
-              watch("profileImage")
-                ? watch("profileImage").map((img: any) => img.preview)
-                : ""
-            }
+            src={watch("profileImage") ? watch("profileImage") : ""}
             name={watch("fullName") ? watch("fullName") : ""}
             mt={{ base: "-15px", lg: "-50px" }}
             h={{ base: "30px", lg: "100px" }}
@@ -79,8 +71,8 @@ const Preview = () => {
           <Text fontWeight={600} fontSize="lg">
             Portfolio
           </Text>
-          {portfolios.length > 0 ? (
-            portfolios.map((portfolio: IPortfolio, index: number) => (
+          {watch("portfolios")?.length > 0 ? (
+            watch("portfolios").map((portfolio: IPortfolio, index: number) => (
               <Flex
                 key={index}
                 flexDir="column"

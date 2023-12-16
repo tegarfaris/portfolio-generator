@@ -7,6 +7,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ValidatePortfolio } from "./portfolio/portfolio.validation";
+import { Provider } from "react-redux";
+import store from "../app/redux/store";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function App({ Component, pageProps }: AppProps) {
@@ -23,13 +25,15 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:description" content="Portfolio Builder by Tegar" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <FormProvider {...methods}>
-        <ChakraProvider theme={theme}>
-          <main className={`${inter.className}`}>
-            <Component {...pageProps} />
-          </main>
-        </ChakraProvider>
-      </FormProvider>
+      <Provider store={store}>
+        <FormProvider {...methods}>
+          <ChakraProvider theme={theme}>
+            <main className={`${inter.className}`}>
+              <Component {...pageProps} />
+            </main>
+          </ChakraProvider>
+        </FormProvider>
+      </Provider>
     </>
   );
 }

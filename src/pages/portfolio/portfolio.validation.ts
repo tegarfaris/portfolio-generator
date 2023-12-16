@@ -15,7 +15,7 @@ export const ValidatePortfolio = Yup.object().shape({
       company: Yup.string().required("Company is required"),
       startDate: Yup.date().required("Start date is required"),
       endDate: Yup.date().required("End date is required"),
-      description: Yup.string().required("description is required"),
+      descriptionPortfolio: Yup.string().required("description is required"),
     })
   ),
 });
