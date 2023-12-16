@@ -41,9 +41,9 @@ const Preview: React.FC<{ watch: UseFormWatch<FieldValues> }> = ({ watch }) => {
           <Avatar
             src={watch("profileImage") ? watch("profileImage") : ""}
             name={watch("profileName") ? watch("profileName") : ""}
-            mt={{ base: "-15px", lg: "-50px" }}
-            h={{ base: "30px", lg: "100px" }}
-            w={{ base: "30px", lg: "100px" }}
+            mt={{ base: "-40px", lg: "-50px" }}
+            h={{ base: "80px", lg: "100px" }}
+            w={{ base: "80px", lg: "100px" }}
           />
         </Flex>
         <Flex justifyContent="center" alignItems="center" flexDir="column">
