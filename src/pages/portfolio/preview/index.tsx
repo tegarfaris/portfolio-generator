@@ -41,18 +41,13 @@ const Preview: React.FC<{ watch: UseFormWatch<FieldValues> }> = ({ watch }) => {
           />
           <Avatar
             src={watch("profileImage") ? watch("profileImage") : ""}
-            name={watch("fullName") ? watch("fullName") : ""}
+            name={watch("profileName") ? watch("profileName") : ""}
             mt={{ base: "-15px", lg: "-50px" }}
             h={{ base: "30px", lg: "100px" }}
             w={{ base: "30px", lg: "100px" }}
           />
         </Flex>
-        <Flex
-          justifyContent="center"
-          alignItems="center"
-          flexDir="column"
-          // maxW="md"
-        >
+        <Flex justifyContent="center" alignItems="center" flexDir="column">
           <Text fontWeight={600} fontSize="xl">
             {watch("profileName")
               ? startCase(watch("profileName"))
